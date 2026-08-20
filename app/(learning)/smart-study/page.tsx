@@ -183,68 +183,18 @@ setLoading(false);
 
 
 async function submitAnswer(){
+  if(!session)
+    return;
 
+  console.log("Smart Study backend is not implemented yet.", {
+    session,
+    answer,
+  });
 
-if(!session)
-return;
+  alert("Smart Study is coming soon. The backend is not implemented yet.");
 
-
-try{
-
-
-setLoading(true);
-
-
-
-await api.post(
-
-`/smart-study/${sessionId}/answer`
-
-{
-
-
-session_id: session,
-
-answer,
-
+  setAnswer("");
 }
-
-);
-
-
-
-setAnswer("");
-
-
-
-}
-
-catch(error){
-
-
-console.error(error);
-
-
-}
-
-finally{
-
-
-setLoading(false);
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
 
 async function loadProgress(){
 

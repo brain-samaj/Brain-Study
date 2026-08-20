@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Suspense,
   useState,
 } from "react";
 
@@ -31,7 +32,7 @@ type Difficulty =
   | "hard";
 
 
-export default function ExamPage() {
+function ExamPageContent() {
 
   const router = useRouter();
 
@@ -534,4 +535,21 @@ async function createExam(){
 
   );
 
+}
+
+
+export default function ExamPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen px-5 py-10">
+        <section className="mx-auto max-w-xl">
+          <div className="rounded-3xl border bg-white p-8 shadow-sm">
+            Loading exam settings...
+          </div>
+        </section>
+      </main>
+    }>
+      <ExamPageContent />
+    </Suspense>
+  );
 }

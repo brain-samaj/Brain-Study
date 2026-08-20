@@ -11,13 +11,21 @@ import {
  ClipboardCheck,
 } from "lucide-react";
 
-export default function LearningFooter() {
+interface LearningFooterProps {
+  materialId?: string;
+}
+
+export default function LearningFooter({
+  materialId: materialIdProp,
+}: LearningFooterProps) {
   const params = useParams();
 
-  const materialId =
+  const routeMaterialId =
     typeof params?.id === "string"
       ? params.id
       : "";
+
+  const materialId = materialIdProp || routeMaterialId;
 
   const links = [
     {
